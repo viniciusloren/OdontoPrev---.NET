@@ -35,7 +35,6 @@ namespace CHALLENGE.Application
 
                     await _sinistroRepository.AddSinistroAsync(sinistro);
 
-                    // Enviar alerta
                     EnviarAlerta(paciente);
                 }
             }

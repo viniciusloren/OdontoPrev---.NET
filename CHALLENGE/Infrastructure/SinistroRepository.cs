@@ -28,7 +28,7 @@ namespace CHALLENGE.Infrastructure
         public async Task AddSinistroAsync(Sinistro sinistro)
         {
             await _context.Sinistros.AddAsync(sinistro);
-            await _context.SaveChangesAsync(); // Salva as mudanças no banco de dados
+            await _context.SaveChangesAsync(); 
         }
 
         public async Task UpdateSinistroAsync(Sinistro sinistro)

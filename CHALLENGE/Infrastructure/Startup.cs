@@ -18,20 +18,17 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        // Configura o contexto do banco de dados
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-        // Registra os repositórios
         services.AddScoped<IPacienteRepository, PacienteRepository>();
-        services.AddScoped<ISinistroRepository, SinistroRepository>(); // Adicione esta linha
+        services.AddScoped<ISinistroRepository, SinistroRepository>(); 
         services.AddScoped<PrevisaoSinistroService>();
 
-        // Adiciona serviços de controladores
-        services.AddControllers(); // Adicione esta linha
+       
+        services.AddControllers(); 
 
-        // Adiciona serviços de autorização
-        services.AddAuthorization(); // Mantenha esta linha
+        services.AddAuthorization(); 
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -51,10 +48,8 @@ public class Startup
 
         app.UseRouting();
 
-        // Certifique-se de que a autenticação é chamada se necessário
-        // app.UseAuthentication(); // Descomente se estiver usando autenticação
 
-        app.UseAuthorization(); // Mantenha esta linha
+        app.UseAuthorization(); 
 
         app.UseEndpoints(endpoints =>
         {

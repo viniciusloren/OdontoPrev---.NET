@@ -8,7 +8,6 @@ namespace CHALLENGE.Domain
         public string NomeMedico { get; set; }
         public string Especialidade { get; set; }
         
-        // Chave estrangeira
         public int PacienteId { get; set; }
         public Paciente Paciente { get; set; }
     }

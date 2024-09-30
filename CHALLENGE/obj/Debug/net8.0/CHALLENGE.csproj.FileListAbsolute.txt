@@ -52,3 +52,4 @@ C:\Users\admin\Desktop\CHALLENGE - .NET\CHALLENGE\CHALLENGE\obj\Debug\net8.0\ref
 C:\Users\admin\Desktop\CHALLENGE - .NET\CHALLENGE\CHALLENGE\obj\Debug\net8.0\CHALLENGE.pdb
 C:\Users\admin\Desktop\CHALLENGE - .NET\CHALLENGE\CHALLENGE\obj\Debug\net8.0\CHALLENGE.genruntimeconfig.cache
 C:\Users\admin\Desktop\CHALLENGE - .NET\CHALLENGE\CHALLENGE\obj\Debug\net8.0\ref\CHALLENGE.dll
+C:\Users\admin\Desktop\CHALLENGE - .NET\CHALLENGE\CHALLENGE\obj\Debug\net8.0\CHALLENGE.sourcelink.json
