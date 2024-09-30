@@ -41,22 +41,22 @@ A arquitetura do projeto seguirá os princípios da Clean Architecture, visando 
 #### Apresentação
 A camada de apresentação será responsável por interagir com o usuário e receber as requisições da API. Esta camada incluirá controladores (controllers) que processarão as requisições HTTP e retornarão as respostas adequadas.
 
-- **Controllers:** Implementação dos controladores, como `SinistroController`, que manipulará as requisições relacionadas a sinistros.
+- **Controllers:** Implementação dos controladores, como SinistroController, que manipulará as requisições relacionadas a sinistros.
 
 #### Aplicação
 A camada de aplicação conterá a lógica de negócios e as regras de uso da aplicação. Ela será composta por serviços que encapsulam as operações principais do sistema.
 
-- **Serviços:** Implementação de serviços como `PrevisaoSinistroService`, que contém a lógica para prever sinistros com base nos dados fornecidos.
+- **Serviços:** Implementação de serviços como PrevisaoSinistroService, que contém a lógica para prever sinistros com base nos dados fornecidos.
 
 #### Domínio
 A camada de domínio conterá os modelos e as regras de negócio do sistema. Esta camada representará o núcleo do sistema e deverá ser independente de qualquer estrutura externa.
 
-- **Modelos:** Definições das entidades, como `Sinistro`, que representarão os dados relevantes para o domínio da aplicação.
+- **Modelos:** Definições das entidades, como Sinistro, que representarão os dados relevantes para o domínio da aplicação.
 
 #### Infraestrutura
 A camada de infraestrutura será responsável pela interação com o banco de dados e a integração com outras APIs externas, se necessário.
 
-- **Acesso a Dados:** Implementação de repositórios, como `SinistroRepository`, que gerenciarão o acesso ao banco de dados.
+- **Acesso a Dados:** Implementação de repositórios, como SinistroRepository, que gerenciarão o acesso ao banco de dados.
 - **Integração:** Qualquer código necessário para interagir com APIs externas ou serviços de terceiros.
 
 ---
