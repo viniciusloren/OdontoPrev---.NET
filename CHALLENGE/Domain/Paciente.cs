@@ -8,14 +8,17 @@ namespace CHALLENGE.Domain
         public DateTime DataNascimento { get; set; }
         public string Sexo { get; set; }
         public string Cep { get; set; }
+        
         public int CadastroId { get; set; }
+        public Cadastro Cadastro { get; set; } 
+
         public List<Prontuario> Prontuarios { get; set; } = new List<Prontuario>();
         public List<Sinistro> Sinistros { get; set; } = new List<Sinistro>();
         public List<Historico> Historicos { get; set; } = new List<Historico>();
 
         public bool VerificarRisco()
         {
-            return Sinistros.Count > 0 || Historicos.Count > 5; 
+            return Sinistros.Count > 0 || Historicos.Count > 5;
         }
     }
 }

@@ -18,4 +18,11 @@
       <None Remove="Views\Shared\__Layout.html" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Views\Pacientes\Create.cshtml.cs" />
+      <Compile Remove="Views\Pacientes\Create.cs" />
+      <Compile Remove="Views\Pacientes\Index.cshtml.cs" />
+      <Compile Remove="Views\Pacientes\CreateCadastro.cs" />
+    </ItemGroup>
+
 </Project>

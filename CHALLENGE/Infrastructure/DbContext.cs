@@ -33,8 +33,8 @@ namespace CHALLENGE.Infrastructure
             modelBuilder.Entity<Cadastro>()
                 .HasMany(c => c.Pacientes)
                 .WithOne()
-                .HasForeignKey(p => p.CadastroId);
-            
+                .HasForeignKey(p => p.CadastroId); 
+
             base.OnModelCreating(modelBuilder);
         }
     }

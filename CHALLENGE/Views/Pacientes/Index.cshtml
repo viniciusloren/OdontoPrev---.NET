@@ -1,35 +1,27 @@
-@model IEnumerable<CHALLENGE.ViewModels.PacienteViewModel>
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Lista de Pacientes";
+}
 
-<h2>Lista de Pacientes</h2>
+<h1>Lista de Pacientes</h1>
 
 <table class="table">
-  <thead>
-  <tr>
-    <th>Nome</th>
-    <th>Tipo de Plano</th>
-    <th>Idade</th>
-    <th>Sexo</th>
-    <th>CEP</th>
-    <th>Número de Sinistros</th>
-    <th>Número de Históricos</th>
-    <th>Possui Risco</th>
-  </tr>
-  </thead>
-  <tbody>
-  @foreach (var paciente in Model)
-  {
-  <tr>
-    <td>@paciente.Nome</td>
-    <td>@paciente.TipoPlano</td>
-    <td>@paciente.Idade</td>
-    <td>@paciente.Sexo</td>
-    <td>@paciente.Cep</td>
-    <td>@paciente.NumeroDeSinistros</td>
-    <td>@paciente.NumeroDeHistoricos</td>
-    <td>@paciente.PossuiRisco</td>
-  </tr>
-  }
-  </tbody>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var paciente in Model.Pacientes)
+        {
+            <tr>
+                <td>@paciente.Nome</td>
+                <td>@paciente.Idade</td>
+                <td>@paciente.Email</td>
+            </tr>
+        }
+    </tbody>
 </table>
-
-<a href="@Url.Action("Create", "Paciente")" class="btn btn-primary">Adicionar Paciente</a>

@@ -1,27 +1,26 @@
-@model CHALLENGE.ViewModels.PacienteViewModel
+@page
+@model CreateModel
+@{
+ViewData["Title"] = "Cadastrar Paciente";
+}
 
-<h1>Criar Paciente</h1>
+<h1>Cadastrar Paciente</h1>
 
-<form asp-action="Create" method="post">
-    <div>
-        <label>Nome:</label>
-        <input asp-for="Nome" />
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Paciente.Nome"></label>
+        <input asp-for="Paciente.Nome" class="form-control" />
+        <span asp-validation-for="Paciente.Nome" class="text-danger"></span>
     </div>
-    <div>
-        <label>Tipo de Plano:</label>
-        <input asp-for="TipoPlano" />
+    <div class="form-group">
+        <label asp-for="Paciente.Idade"></label>
+        <input asp-for="Paciente.Idade" class="form-control" />
+        <span asp-validation-for="Paciente.Idade" class="text-danger"></span>
     </div>
-    <div>
-        <label>Sexo:</label>
-        <input asp-for="Sexo" />
+    <div class="form-group">
+        <label asp-for="Paciente.Email"></label>
+        <input asp-for="Paciente.Email" class="form-control" />
+        <span asp-validation-for="Paciente.Email" class="text-danger"></span>
     </div>
-    <div>
-        <label>CEP:</label>
-        <input asp-for="Cep" />
-    </div>
-    <div>
-        <label>Data de Nascimento:</label>
-        <input asp-for="DataNascimento" type="date" />
-    </div>
-    <button type="submit">Criar</button>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>

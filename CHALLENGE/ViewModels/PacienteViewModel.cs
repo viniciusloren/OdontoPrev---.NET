@@ -7,16 +7,17 @@ namespace CHALLENGE.ViewModels
         public string TipoPlano { get; set; }
         public string Sexo { get; set; }
         public string Cep { get; set; }
+        public DateTime DataNascimento { get; set; }
+        
+        public int CadastroId { get; set; } 
 
         public int Idade
         {
             get
             {
-                return DateTime.Now.Year - DataNascimento.Year;
+                return DateTime.Now.Year - DataNascimento.Year - (DateTime.Now.DayOfYear < DataNascimento.DayOfYear ? 1 : 0);
             }
         }
-
-        public DateTime DataNascimento { get; set; }
 
         public bool PossuiRisco { get; set; }
 

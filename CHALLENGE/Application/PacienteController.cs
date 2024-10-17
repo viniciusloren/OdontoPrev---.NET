@@ -1,56 +1,26 @@
-using CHALLENGE.Application;
-using CHALLENGE.Domain;
 using CHALLENGE.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-public class PacienteController : Controller
+namespace CHALLENGE.Controllers
 {
-    private readonly IPacienteRepository _pacienteRepository;
-
-    public PacienteController(IPacienteRepository pacienteRepository)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PacienteController : ControllerBase
     {
-        _pacienteRepository = pacienteRepository;
-    }
-
-    public async Task<IActionResult> Index()
-    {
-        var pacientes = await _pacienteRepository.GetAllPacientesAsync();
-        return View(pacientes);
-    }
-
-    [HttpGet]
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(PacienteViewModel model)
-    {
-        if (ModelState.IsValid)
+        // Ação para criar um paciente
+        [HttpPost("create")]
+        public IActionResult Create([FromBody] PacienteViewModel paciente)
         {
-            var paciente = new Paciente
-            {
-                Nome = model.Nome,
-                TipoPlano = model.TipoPlano,
-                Sexo = model.Sexo,
-                Cep = model.Cep,
-                DataNascimento = model.DataNascimento,
-            };
-
-            await _pacienteRepository.AddPacienteAsync(paciente);
-            return RedirectToAction("Index");
+            // Lógica para criar o paciente
+            return Ok();
         }
-        return View(model);
-    }
 
-    public async Task<IActionResult> Details(int id)
-    {
-        var paciente = await _pacienteRepository.GetPacienteByIdAsync(id);
-        if (paciente == null)
+        // Ação para obter todos os pacientes
+        [HttpGet("all")]
+        public IActionResult GetAll()
         {
-            return NotFound();
+            // Lógica para obter todos os pacientes
+            return Ok();
         }
-        return View(paciente);
     }
 }
