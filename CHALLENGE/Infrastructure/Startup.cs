@@ -25,11 +25,19 @@ public class Startup
         services.AddScoped<ISinistroRepository, SinistroRepository>(); 
         services.AddScoped<PrevisaoSinistroService>();
 
-       
         services.AddControllers(); 
-
         services.AddAuthorization(); 
+
+        // Configuração de CORS
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+        });
     }
+
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
@@ -39,7 +47,7 @@ public class Startup
         }
         else
         {
-            app.UseExceptionHandler("/Home/Error"); 
+            app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
         }
 
@@ -48,12 +56,22 @@ public class Startup
 
         app.UseRouting();
 
+        // Habilita CORS
+        app.UseCors("AllowAll");
 
         app.UseAuthorization(); 
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllers(); 
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            endpoints.MapControllerRoute(
+                name: "custom",
+                pattern: "app/{controller=Home}/{action=Index}/{id?}");
         });
     }
 }
+
+

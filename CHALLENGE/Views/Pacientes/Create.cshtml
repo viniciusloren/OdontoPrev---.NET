@@ -1,0 +1,27 @@
+@model CHALLENGE.ViewModels.PacienteViewModel
+
+<h1>Criar Paciente</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nome:</label>
+        <input asp-for="Nome" />
+    </div>
+    <div>
+        <label>Tipo de Plano:</label>
+        <input asp-for="TipoPlano" />
+    </div>
+    <div>
+        <label>Sexo:</label>
+        <input asp-for="Sexo" />
+    </div>
+    <div>
+        <label>CEP:</label>
+        <input asp-for="Cep" />
+    </div>
+    <div>
+        <label>Data de Nascimento:</label>
+        <input asp-for="DataNascimento" type="date" />
+    </div>
+    <button type="submit">Criar</button>
+</form>

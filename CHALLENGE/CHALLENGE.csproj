@@ -14,4 +14,8 @@
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Views\Shared\__Layout.html" />
+    </ItemGroup>
+
 </Project>
