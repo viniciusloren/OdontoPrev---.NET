@@ -1,45 +1,102 @@
 using CHALLENGE.Application;
 using CHALLENGE.Domain;
+using CHALLENGE.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-[Route("api/[controller]")]
-[ApiController]
-public class CadastroController : ControllerBase
+namespace CHALLENGE.Controllers
 {
-    private readonly ICadastroRepository _cadastroRepository;
-
-    public CadastroController(ICadastroRepository cadastroRepository)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CadastroController : ControllerBase
     {
-        _cadastroRepository = cadastroRepository;
-    }
+        private readonly ICadastroRepository _cadastroRepository;
 
-    [HttpGet]
-    public async Task<IActionResult> GetAll()
-    {
-        var cadastros = await _cadastroRepository.GetAllCadastrosAsync();
-        return Ok(cadastros);
-    }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
-    {
-        var cadastro = await _cadastroRepository.GetCadastroByIdAsync(id);
-        if (cadastro == null)
+        public CadastroController(ICadastroRepository cadastroRepository)
         {
-            return NotFound();
-        }
-        return Ok(cadastro);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create([FromBody] Cadastro cadastro)
-    {
-        if (cadastro == null)
-        {
-            return BadRequest();
+            _cadastroRepository = cadastroRepository;
         }
 
-        await _cadastroRepository.AddCadastroAsync(cadastro);
-        return CreatedAtAction(nameof(GetById), new { id = cadastro.Id }, cadastro);
+        [HttpPost]
+        public async Task<IActionResult> CadastrarUsuario([FromBody] CadastroViewModel cadastroViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var usuario = new Cadastro
+            {
+                Nome = cadastroViewModel.Nome,
+                Sobrenome = cadastroViewModel.Sobrenome,
+                Email = cadastroViewModel.Email,
+                Senha = cadastroViewModel.Senha,
+                DataNascimento = cadastroViewModel.DataNascimento,
+                Sexo = cadastroViewModel.Sexo,
+                TipoPlano = cadastroViewModel.TipoPlano,
+                Cep = cadastroViewModel.Cep
+            };
+
+            await _cadastroRepository.AddUsuarioAsync(usuario);
+            return CreatedAtAction(nameof(GetUsuarioById), new { id = usuario.Id }, usuario);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUsuarioById(int id)
+        {
+            var usuario = await _cadastroRepository.GetUsuarioByIdAsync(id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            return Ok(usuario);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarUsuario(int id, [FromBody] CadastroViewModel cadastroViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var usuario = await _cadastroRepository.GetUsuarioByIdAsync(id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            usuario.Nome = cadastroViewModel.Nome;
+            usuario.Sobrenome = cadastroViewModel.Sobrenome;
+            usuario.Email = cadastroViewModel.Email;
+            usuario.Senha = cadastroViewModel.Senha;
+            usuario.DataNascimento = cadastroViewModel.DataNascimento;
+            usuario.Sexo = cadastroViewModel.Sexo;
+            usuario.TipoPlano = cadastroViewModel.TipoPlano;
+            usuario.Cep = cadastroViewModel.Cep;
+
+            await _cadastroRepository.UpdateUsuarioAsync(usuario);
+            return NoContent(); 
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletarUsuario(int id)
+        {
+            var usuario = await _cadastroRepository.GetUsuarioByIdAsync(id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            await _cadastroRepository.DeleteUsuarioAsync(id);
+            return NoContent(); 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTodosUsuarios()
+        {
+            var usuarios = await _cadastroRepository.GetAllUsuariosAsync();
+            return Ok(usuarios);
+        }
     }
 }

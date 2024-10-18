@@ -24,11 +24,11 @@ public class Startup
         services.AddScoped<IPacienteRepository, PacienteRepository>();
         services.AddScoped<ISinistroRepository, SinistroRepository>(); 
         services.AddScoped<PrevisaoSinistroService>();
+        services.AddScoped<ICadastroRepository, CadastroRepository>();
 
         services.AddControllers(); 
         services.AddAuthorization(); 
 
-        // Configuração de CORS
         services.AddCors(options =>
         {
             options.AddPolicy("AllowAll",
@@ -37,7 +37,6 @@ public class Startup
                     .AllowAnyHeader());
         });
     }
-
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
@@ -56,22 +55,13 @@ public class Startup
 
         app.UseRouting();
 
-        // Habilita CORS
         app.UseCors("AllowAll");
 
         app.UseAuthorization(); 
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            endpoints.MapControllerRoute(
-                name: "custom",
-                pattern: "app/{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapControllers();
         });
     }
 }
-
-
