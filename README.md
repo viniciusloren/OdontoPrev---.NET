@@ -1,8 +1,8 @@
 Este é um sistema de gestão desenvolvido com ASP.NET Core para cadastro de usuários, pacientes e prontuários. A aplicação utiliza a arquitetura MVC (Model-View-Controller) para organizar e estruturar o código de maneira eficiente.
 
-##VINICIUS LORENZETTI RM:553121
-##JOAO PEDRO FONTANA RM:553343
-##MARCELO GALI RM: 553654
+## VINICIUS LORENZETTI RM:553121
+## JOAO PEDRO FONTANA RM:553343
+## MARCELO GALI RM: 553654
 ## Funcionalidades
 
 1. **Cadastro de Usuário**
