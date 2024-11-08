@@ -28,7 +28,7 @@ A arquitetura do projeto é dividida nas seguintes camadas:
 
 ## Funcionalidades
 
-### Cadastro de Usuário
+### Usuário
 
 - **Endpoint**: `POST /api/cadastro`
 - **Descrição**: Permite o cadastro de um novo usuário. Os dados são validados para garantir a integridade.
@@ -61,6 +61,23 @@ A arquitetura do projeto é dividida nas seguintes camadas:
         "cadastroId": 1
     }
     ```
+
+### Gerenciamento de Prontuarios
+
+- **Criar Prontuario**: `POST /api/prontuario/create`
+- **Obter Todos os Prontuarios**: `GET /api/prontuario/all`
+- **Exemplo de Requisição para Criar Paciente**:
+    ```json
+    {
+        "prontuarioId": 10
+        "nome": "Maria da Silva",
+        "tipoPlano": "Odontológico",
+        "descricao": "Feminino",
+        "statusprontuario": "Ativo",
+    }
+    ```
+
+
 
 ### Previsão de Sinistros
 
