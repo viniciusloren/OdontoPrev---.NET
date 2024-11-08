@@ -1,0 +1,58 @@
+@model CHALLENGE.ViewModels.CadastroViewModel
+
+@{
+ViewBag.Title = "Cadastrar Usuário";
+Layout = "_Layout";
+}
+
+<h2>Cadastrar Usuário</h2>
+
+<form asp-action="CadastrarUsuario" method="post">
+    <div>
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Sobrenome"></label>
+        <input asp-for="Sobrenome" />
+        <span asp-validation-for="Sobrenome" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Senha"></label>
+        <input asp-for="Senha" type="password" />
+        <span asp-validation-for="Senha" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="DataNascimento"></label>
+        <input asp-for="DataNascimento" type="date" />
+        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Sexo"></label>
+        <input asp-for="Sexo" />
+        <span asp-validation-for="Sexo" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="TipoPlano"></label>
+        <input asp-for="TipoPlano" />
+        <span asp-validation-for="TipoPlano" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Cep"></label>
+        <input asp-for="Cep" />
+        <span asp-validation-for="Cep" class="text-danger"></span>
+    </div>
+    <button type="submit">Cadastrar</button>
+</form>
+
+@RenderSection("Scripts", required: false)
+}
+
+
+

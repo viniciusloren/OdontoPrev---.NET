@@ -1,0 +1,24 @@
+@using CHALLENGE.ViewModels 
+@model CHALLENGE.ViewModels.IndexModel 
+
+@{
+ViewData["Title"] = "Lista de Pacientes";
+}
+
+<h1>Lista de Pacientes</h1>
+
+<table class="table">
+<thead>
+<tr>
+<th>Nome</th>
+</tr>
+</thead>
+<tbody>
+@foreach (var paciente in Model.Pacientes)
+{
+<tr>
+<td>@paciente.Nome</td>
+</tr>
+}
+</tbody>
+</table>

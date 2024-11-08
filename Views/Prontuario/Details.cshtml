@@ -1,0 +1,49 @@
+@model CHALLENGE.ViewModels.ProntuarioViewModel
+
+@{
+ViewBag.Title = "Cadastrar Prontuario";
+Layout = "_Layout";
+}
+
+<h2>Detalhes do Prontuário</h2>
+
+<div>
+<h4>Prontuário</h4>
+<hr />
+<dl class="row">
+<dt class="col-sm-2">
+@Html.DisplayNameFor(model => model.Nome)
+</dt>
+<dd class="col-sm-10">
+@Html.DisplayFor(model => model.Nome)
+</dd>
+<dt class="col-sm-2">
+@Html.DisplayNameFor(model => model.TipoPlano)
+</dt>
+<dd class="col-sm-10">
+@Html.DisplayFor(model => model.TipoPlano)
+</dd>
+<dt class="col-sm-2">
+@Html.DisplayNameFor(model => model.Descricao)
+</dt>
+<dd class="col-sm-10">
+@Html.DisplayFor(model => model.Descricao)
+</dd>
+<dt class="col-sm-2">
+@Html.DisplayNameFor(model => model.StatusProntuario)
+</dt>
+<dd class="col-sm-10">
+@Html.DisplayFor(model => model.StatusProntuario)
+</dd>
+<dt class="col-sm-2">
+@Html.DisplayNameFor(model => model.Id)
+</dt>
+<dd class="col-sm-10">
+@Html.DisplayFor(model => model.Id)
+</dd>
+</dl>
+</div>
+<div>
+<a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+<a asp-action="Index">Voltar para a Lista</a>
+</div>
