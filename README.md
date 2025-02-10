@@ -2,7 +2,6 @@ Este é um sistema de gestão desenvolvido com ASP.NET Core para cadastro de usu
 
 ## VINICIUS LORENZETTI RM:553121
 ## JOAO PEDRO FONTANA RM:553343
-## MARCELO GALI RM: 553654
 ## Funcionalidades
 
 1. **Cadastro de Usuário**
